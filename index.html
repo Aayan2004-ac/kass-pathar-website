@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaas Pathar</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .hero-section .carousel-caption h1 {
+            color: var(--light-color);
+        }
+
+        .hero-section .carousel-caption p {
+            color: var(--light-color);
+        }
+
+        .hero-section .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .hero-section .btn-outline-light {
+            border-color: var(--light-color);
+            color: var(--light-color);
+        }
+
+        .hero-section .btn-outline-light:hover {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .hero-section {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-caption {
+            bottom: 20%;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .carousel img {
+            object-fit: cover;
+            height: 100vh;
+        }
+
+        .btn-primary {
+            background-color: #0D3B66;
+            border-color: #0D3B66;
+        }
+
+        .btn-outline-light {
+            color: #FAF0CA;
+            border-color: #FAF0CA;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(100%);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-overlay h5 {
+            font-size: 1.5rem;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #F95738;
+            box-shadow: 0 0 5px rgba(249, 87, 56, 0.5);
+        }
+
+        .btn:hover {
+            background-color: #0D3B66;
+            transform: translateY(-5px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .form-control,
+        .btn {
+            transition: all 0.3s ease-in-out;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-custom {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark background-color fixed-top bg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40"
+                            class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <div type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="around_kaas.html">Around Kaas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="flower_gallery.html">Flower Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-section position-relative text-white">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active overlay-gradient">
+                    <img src="image/slide1.jpg" class="d-block w-100 img-fluid" alt="slide1.jpg">
+                    <div class="carousel-caption d-flex flex-column align-items-start text-start">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Welcome to Kaas Pathar
+                        </h1>
+                        <p class="fs-5 fw-light animate__animated animate__fadeInUp">Discover the breathtaking beauty of
+                            the Valley of Flowers.</p>
+                        <div class="mt-4">
+                            <a href="booking.html"
+                                class="btn btn-primary btn-lg me-3 px-4 animate__animated animate__fadeInUp">Book
+                                Now</a>
+                            <a href="about.html"
+                                class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Learn
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="image/slide2.jpg" class="d-block w-100 img-fluid overlay-gradient" alt="slide2.jpg">
+                    <div class="carousel-caption d-flex flex-column align-items-start text-start">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Explore Nature's Glory
+                        </h1>
+                        <p class="fs-5 fw-light animate__animated animate__fadeInUp">A serene destination for every
+                            nature lover.</p>
+                        <div class="mt-4">
+                            <a href="flower_gallery.html"
+                                class="btn btn-primary btn-lg me-3 px-4 animate__animated animate__fadeInUp">View
+                                Gallery</a>
+                            <a href="contact.html"
+                                class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Contact
+                                Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="image/slide3.jpg" class="d-block w-100 img-fluid overlay-gradient" alt="slide3.jpg">
+                    <div class="carousel-caption d-flex flex-column align-items-start text-start">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Nature's Finest Wonders
+                        </h1>
+                        <p class="fs-5 fw-light animate__animated animate__fadeInUp">Unveil the hidden gems of flora and
+                            fauna.</p>
+                        <div class="mt-4">
+                            <a href="details.html"
+                                class="btn btn-primary btn-lg me-3 px-4 animate__animated animate__fadeInUp">Learn
+                                More</a>
+                            <a href="booking.html"
+                                class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Book a
+                                Tour</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="image/slide4.jpg" class="d-block w-100 img-fluid overlay-gradient" alt="slide4.jpg">
+                    <div class="carousel-caption d-flex flex-column align-items-start text-start">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Valley of Blossoms</h1>
+                        <p class="fs-5 fw-light animate__animated animate__fadeInUp">A paradise for nature enthusiasts.
+                        </p>
+                        <div class="mt-4">
+                            <a href="gallery.html"
+                                class="btn btn-primary btn-lg me-3 px-4 animate__animated animate__fadeInUp">View
+                                Gallery</a>
+                            <a href="contact.html"
+                                class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Contact
+                                Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="image/slide5.jpg" class="d-block w-100 img-fluid overlay-gradient" alt="slide5.jpg">
+                    <div class="carousel-caption d-flex flex-column align-items-start text-start">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">A Walk to Remember</h1>
+                        <p class="fs-5 fw-light animate__animated animate__fadeInUp">Capture the moments that last
+                            forever.</p>
+                        <div class="mt-4">
+                            <a href="adventures.html"
+                                class="btn btn-primary btn-lg me-3 px-4 animate__animated animate__fadeInUp">Join Us</a>
+                            <a href="contact.html"
+                                class="btn btn-outline-light btn-lg px-4 animate__animated animate__fadeInUp">Inquire
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls with Dots Navigation -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Section -->
+    <section class="features py-5" style="position: relative; overflow: hidden;">
+        <div class="container text-center">
+            <h2 class="display-4 fw-bold mb-5"
+                style="color: #0D3B66; text-transform: uppercase; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Why Visit Kaas Pathar?
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+
+            <div class="row gy-5">
+                <!-- Feature 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature1.jpeg" class="card-img-top" alt="Spectacular Scenery"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Explore More</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Spectacular Scenery</h5>
+                            <p class="card-text" style="color: #F95738;">Experience breathtaking landscapes and vibrant
+                                flowers, offering an unforgettable visual feast.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature2.jpeg" class="card-img-top" alt="Rich Biodiversity"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Discover Flora</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Rich Biodiversity</h5>
+                            <p class="card-text" style="color: #F95738;">Delve into the serenity of diverse flora and
+                                fauna, making it a haven for nature enthusiasts.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature3.jpeg" class="card-img-top" alt="Guided Tours"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Join Now</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Guided Tours</h5>
+                            <p class="card-text" style="color: #F95738;">Take a journey with expert guides to uncover
+                                the secrets of Kaas Pathar's natural beauty.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature4.jpeg" class="card-img-top" alt="Photo Opportunities"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Capture Beauty</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Photo Opportunities</h5>
+                            <p class="card-text" style="color: #F95738;">Snap stunning photos of the landscapes and
+                                wildlife, creating lasting memories of your visit.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature5.jpeg" class="card-img-top" alt="Cultural Experience"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Feel the Culture</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Cultural Experience</h5>
+                            <p class="card-text" style="color: #F95738;">Engage with the local culture, savor
+                                traditional cuisine, and enjoy warm hospitality.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card feature-card border-0 shadow rounded-4 overflow-hidden"
+                        style="transition: transform 0.3s, box-shadow 0.3s; background-color: #FFFFFF;">
+                        <div class="image-container position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/feature6.jpeg" class="card-img-top" alt="Relaxing Ambiance"
+                                style="height: 100%; width: 100%; object-fit: cover;">
+                            <div class="image-overlay d-flex align-items-center justify-content-center"
+                                style="background-color: rgba(13, 59, 102, 0.7);">
+                                <h5 class="text-white fw-bold">Unwind</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #0D3B66;">Relaxing Ambiance</h5>
+                            <p class="card-text" style="color: #F95738;">Escape the hustle and bustle of city life to
+                                enjoy the tranquility of Kaas Pathar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials py-5" style="color: #FAF0CA;">
+        <div class="container text-center text-light">
+            <h2 class="display-4 fw-bold mb-5"
+                style="color: #0D3B66; text-transform: uppercase; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                What Our Visitors Say?
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Testimonial 1 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial1.jpg" class="img-fluid"
+                                    alt="John Doe">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "A once-in-a-lifetime experience. The beauty of Kaas Pathar is beyond words!"
+                            </p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- John Doe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial2.jpg" class="img-fluid"
+                                    alt="Jane Smith">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "The valley is a paradise for nature lovers. Highly recommend visiting!"</p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- Jane Smith</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial3.jpg" class="img-fluid"
+                                    alt="Mark Taylor">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "The guided tours were informative and made the trip even more enjoyable!"</p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- Mark Taylor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-1">
+                <!-- Testimonial 4 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial4.jpg" class="img-fluid"
+                                    alt="Sarah Williams">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "Kaas Pathar offers a peaceful escape into nature. The atmosphere is pure magic."</p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- Sarah Williams</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial5.jpg" class="img-fluid"
+                                    alt="Alex Johnson">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "A perfect getaway for photography enthusiasts. The landscape is a dream!"</p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- Alex Johnson</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="col">
+                    <div class="card testimonial-card bg-transparent border-light shadow-lg rounded-3"
+                        style="transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; background-color: #0D3B66; padding: 20px; position: relative;">
+                        <div class="card-body" style="margin-top: 60px;">
+                            <div class="testimonial-img"
+                                style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #F95738;">
+                                <img src="image/Testimonial6.jpg" class="img-fluid"
+                                    alt="David Lee">
+                            </div>
+                            <p class="card-text"
+                                style="font-size: 1.4rem; font-style: italic; color: #FAF0CA; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                "The best experience for nature lovers. Kaas Pathar is truly one-of-a-kind!"</p>
+                            <p class="text-end mt-3" style="color: #F95738; font-weight: 600;">- David Lee</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq py-5" id="faqs">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-5"
+                style="color: #0D3B66; text-transform: uppercase; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Frequently Asked Questions
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is the best time to visit Kaas Pathar?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The best time to visit is during the monsoon season, from June to September, when the valley
+                            is covered in vibrant flowers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Are there any guided tours available?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer guided tours that provide detailed information about the flora and fauna of
+                            Kaas Pathar.
+                        </div>
+                    </div>
+                </div>
+                <!-- New Questions and Answers -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Is there an entry fee for visiting Kaas Pathar?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, there is an entry fee for visiting Kaas Pathar. The fee is used to maintain the site
+                            and
+                            its biodiversity.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Are there any nearby accommodations available?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, there are several accommodations nearby, including hotels, guest houses, and camping
+                            options.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Can I visit Kaas Pathar with children?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, Kaas Pathar is a family-friendly destination, and children will enjoy the beautiful
+                            flowers
+                            and scenic views.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            What should I carry while visiting Kaas Pathar?
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            It is advisable to carry comfortable shoes for walking, a hat, sunscreen, water, and a
+                            camera to
+                            capture the scenic beauty.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Are there any restrictions on photography at Kaas Pathar?
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            While photography is allowed, please refrain from disturbing the delicate ecosystem by
+                            stepping
+                            on the flowers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            Is Kaas Pathar accessible by public transport?
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, Kaas Pathar is accessible by public transport, with buses and taxis available from
+                            nearby
+                            cities like Satara.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact py-5" id="contact-us">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-5"
+                style="color: #0D3B66; text-transform: uppercase; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Contact Us
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <input type="text" class="form-control form-control-lg shadow-sm" placeholder="Your Name"
+                            required style="border-radius: 30px; padding-left: 20px; transition: all 0.3s ease;">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <input type="email" class="form-control form-control-lg shadow-sm" placeholder="Your Email"
+                            required style="border-radius: 30px; padding-left: 20px; transition: all 0.3s ease;">
+                    </div>
+                    <div class="col-12 mb-4">
+                        <textarea class="form-control form-control-lg shadow-sm" rows="4" placeholder="Your Message"
+                            required
+                            style="border-radius: 30px; padding-left: 20px; transition: all 0.3s ease;"></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5 shadow-lg"
+                            style="border-radius: 30px; background-color: #F95738; border: none; transition: all 0.3s ease;">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: #F95738;">Kaas Pathar</h5>
+                    <p>
+                        Explore the beautiful Kaas Plateau, a UNESCO World Heritage Site famous for its incredible
+                        biodiversity and seasonal wildflowers.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><a href="#about-us" class="text-light text-decoration-none">About Us</a></li>
+                        <li><a href="#contact-us" class="text-light text-decoration-none">Contact Us</a></li>
+                        <li><a href="#faqs" class="text-light text-decoration-none">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: #F95738;">Find Us</h5>
+                    <div class="embed-responsive embed-responsive-16by9"
+                        style="height: 300px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <iframe class="embed-responsive-item"
+                            src="https://www.google.com/maps/embed?pb=YOUR_NEW_PB_PARAMETER" allowfullscreen=""
+                            loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: #F95738;">Follow Us</h5>
+                    <ul class="list-unstyled d-flex justify-content-center">
+                        <li class="mx-3">
+                            <a href="#" class="text-light fs-3" style="transition: color 0.3s;"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="#" class="text-light fs-3" style="transition: color 0.3s;"><i
+                                    class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="#" class="text-light fs-3" style="transition: color 0.3s;"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="#" class="text-light fs-3" style="transition: color 0.3s;"><i
+                                    class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4" style="border-color: #F95738;">
+
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Kaas Pathar. All Rights Reserved.</p>
+                <p><a href="#privacy-policy" class="text-light text-decoration-none">Privacy Policy</a> | <a
+                        href="#terms-conditions" class="text-light text-decoration-none">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+    </script>
+</body>
+
+</html>

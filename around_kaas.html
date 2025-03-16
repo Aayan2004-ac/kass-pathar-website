@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around Kaas - Kaas Pathar</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .margin-top {
+            margin-top: 66px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .section-header {
+            color: var(--primary-color);
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .card-custom {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--light-color);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            object-fit: cover;
+            width: 100%;
+            height: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-img-wrapper:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .card-img-wrapper:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn-light {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+        }
+
+        .btn-light:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .card-body.text-start {
+            text-align: left;
+        }
+
+        .col-md-4 {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        @media (max-width: 768px) {
+            .card-custom {
+                margin-bottom: 20px;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        .row.g-4 {
+            padding: 20px;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--primary-color);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40"
+                            class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <div type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="around_kaas.html">Around Kaas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="flower_gallery.html">Flower Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container margin-top mb-5">
+        <header class="container-fluid py-5" data-aos="fade-down">
+            <h2 class="display-4 fw-bold text-uppercase"
+                style="color: #0D3B66; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Around Kaas
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+        </header>
+
+        <div class="row g-4">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow-lg border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Kaas Lake.jpeg" class="card-img-top img-fluid" alt="Kaas Lake">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body text-start">
+                        <h5 class="card-title">Kaas Lake & Dak Bunglow</h5>
+                        <p class="card-text">Constructed 100 years ago to supply drinking water for Satara, this lake is
+                            an engineering marvel using natural gravity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Ekiv Waterfall.jpeg" class="card-img-top" alt="Ekiv Waterfall">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Ekiv Waterfall</h5>
+                        <p class="card-text">Located 28 KM from Satara, Ekiv is a serene waterfall surrounded by lush
+                            greenery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Kumudini Lake.jpeg" class="card-img-top" alt="Kumudini Lake">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Kumudini Lake</h5>
+                        <p class="card-text">A shallow lake near Rajmarg, home to rare and exotic flower species across
+                            2 hectares.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Bhambawali Vajrai Waterfall.jpeg" class="card-img-top"
+                            alt="Bhambawali Vajrai Waterfall">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Bhambawali Vajrai Waterfall</h5>
+                        <p class="card-text">A mesmerizing 260-meter-high waterfall nestled in the village of
+                            Bhambawali.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/devrai1.jpg" class="card-img-top" alt="Ghatai Devrai">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Ghatai Devrai</h5>
+                        <p class="card-text">A sacred forest near Kaas Plateau, dedicated to conservation and home to
+                            Ghatai Temple.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/bamnoli.jpeg" class="card-img-top" alt="Boat Club">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Boat Club</h5>
+                        <p class="card-text">Located 12 km from Kaas Plateau, offering boating and water sports on the
+                            Shivsagar backwaters.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Shri Kshetra Yewateshwar.jpeg" class="card-img-top"
+                            alt="Shri Kshetra Yewateshwar">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Shri Kshetra Yewateshwar</h5>
+                        <p class="card-text">Explore this 2000-feet-high site featuring a 1000-year-old Hemadpanthi Shiv
+                            Temple.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Vasota Fort.jpeg" class="card-img-top" alt="Vasota Fort">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Vasota Fort</h5>
+                        <p class="card-text">A historic fort located in the Koyana basin. Forest Department permission
+                            required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card shadow border-0 h-100 card-custom">
+                    <div class="card-img-wrapper position-relative overflow-hidden">
+                        <img src="image/Koyna Wildlife Sanctuary.jpeg" class="card-img-top"
+                            alt="Koyna Wildlife Sanctuary">
+                        <div class="card-overlay d-flex align-items-center justify-content-center">
+                            <a href="#" class="btn btn-light btn-sm">View More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Koyna Wildlife Sanctuary</h5>
+                        <p class="card-text">Home to the rare Bengal tiger and a variety of wildlife, this sanctuary is
+                            a must-visit for nature lovers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Kaas Pathar | All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

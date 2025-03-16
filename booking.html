@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Kaas Pathar</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .margin-top {
+            margin-top: 66px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(77, 161, 169, 0.25);
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            padding: 12px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(77, 161, 169, 0.2);
+        }
+
+        .calendar {
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .calendar-header {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40" class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="around_kaas.html">Around Kaas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flower_gallery.html">Flower Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container margin-top mb-5">
+        <header class="container-fluid py-5" data-aos="fade-down">
+            <h2 class="display-4 fw-bold text-uppercase"
+                style="color: #0D3B66; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Book Your Visit to Kaas Pathar
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+        </header>
+
+        <!-- Booking Section -->
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-form" data-aos="fade-up" data-aos-duration="1000">
+                    <form action="#" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group pb-3">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group pb-3">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group pb-3">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group pb-3">
+                            <label for="date">Booking Date</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="form-group pb-4">
+                            <label for="group-size">Group Size</label>
+                            <input type="number" class="form-control" id="group-size" placeholder="Enter the number of people" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-custom">Submit Booking</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Kaas Pathar | All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

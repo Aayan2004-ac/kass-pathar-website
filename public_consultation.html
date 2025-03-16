@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Public Consultation</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+            --button-color: #F95738;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .margin-top {
+            margin-top: 66px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .key-learnings-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .key-learnings-list li {
+            margin-bottom: 15px;
+        }
+
+        /* Card Styles */
+        .card-container .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-container .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background: linear-gradient(45deg, #ff6f61, #ffbc00);
+            color: white;
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+
+        .card-body {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 0 0 0.75rem 0.75rem;
+        }
+
+        .card-body p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .card-body strong {
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .card-body p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Container Styling */
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Additional Insights Section */
+        .new-content h3 {
+            color: #0D3B66;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .new-content p {
+            font-size: 1.1rem;
+        }
+
+        /* AOS Animation Delay */
+        .card-container .card,
+        .new-content {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--primary-color);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40"
+                            class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <div type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="around_kaas.html">Around Kaas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="flower_gallery.html">Flower Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container margin-top">
+        <!-- Header Section -->
+        <header class="container-fluid py-5" data-aos="fade-down">
+            <h2 class="display-4 fw-bold text-uppercase"
+                style="color: #0D3B66; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Key Learnings from Kaas Consultation
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+        </header>
+
+        <!-- Key Learnings Section -->
+        <div class="container-fluid row" data-aos="fade-up">
+            <div class="col-md-12">
+                <ul class="key-learnings-list list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Creating a representative group providing expertise on biodiversity, socio-economic, recreation,
+                        administrative, and legal issues to aid in managing ecologically sensitive areas. This
+                        collaborative effort will ensure informed decision-making and a holistic approach to sustainable
+                        management.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Capacity building of Forest department staff to conserve ecologically sensitive areas and
+                        special habitats. Training programs, workshops, and field activities will empower staff with the
+                        knowledge and skills necessary for effective conservation practices.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Study of tourism in ecologically sensitive areas to identify the carrying capacity of each site
+                        for future tourism decisions. This will involve data collection, analysis, and recommendations
+                        for sustainable tourism practices to minimize environmental degradation.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Linking tourism to direct conservation actions while minimizing impacts on the ecosystem. By
+                        fostering responsible tourism, the project aims to create economic incentives for local
+                        communities while protecting biodiversity.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Educating media on advertising ecologically sensitive areas responsibly. This includes providing
+                        training and resources to journalists, ensuring accurate representation of environmental issues
+                        and encouraging positive storytelling.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Promoting citizen awareness and ethical guidelines for tourists visiting ecologically sensitive
+                        areas. Public awareness campaigns will be designed to foster responsible behavior, respect for
+                        local cultures, and protection of natural habitats.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Revising ecotourism guidelines to include special concerns of ecologically sensitive areas. This
+                        will involve collaboration with experts to develop comprehensive guidelines that address the
+                        unique challenges posed by these areas.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Categorizing tourism based on the impact on natural ecosystems and adjusting tourism categories
+                        accordingly. This will allow for better management of tourism flows and ensure that areas are
+                        not overwhelmed by high-impact activities.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Rigorous scientific monitoring of tourism impacts with necessary mid-course corrections.
+                        Continuous monitoring and assessment will help mitigate negative effects and allow for adaptive
+                        management strategies.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        Scientific assessments of habitat, tourism, management, and recreation plans before initiating
+                        irreversible actions. Conducting comprehensive environmental impact assessments (EIAs) ensures
+                        that projects are sustainable and responsible.
+                    </li>
+                    <li class="list-group-item d-flex align-items-center p-4 shadow-sm rounded-lg mb-3 bg-light"
+                        data-aos="fade-right">
+                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                        These key learnings are based on observations from Maharashtra and globally, providing valuable
+                        insights for ecotourism management. The knowledge gained from both local and international
+                        examples will guide future strategies in ecotourism and conservation.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card Section -->
+        <div class="card-container row mt-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Project Coordinator</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p><strong>Biome Conservation Foundation, Pune</strong><br>
+                            Networking and information support for the conservation of rocky plateaus in the
+                            Sahyadri-Konkan corridor (CEPF-ATREE WGhats initiative).
+                        </p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Long-Term Effects of Unorganized Tourism</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p>The author is also drafting corrective measures for the Panchgani tableland rocky plateau,
+                            previously similar to Kas in biological richness, as required by the High Court.</p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Sustainable Ecotourism</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p>This project aims to promote sustainable ecotourism practices while protecting fragile
+                            ecosystems in ecologically sensitive areas.</p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Biodiversity Conservation Strategies</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p>Developing long-term strategies for the preservation of biodiversity and natural habitats in
+                            the Sahyadri range through collaborative efforts with local communities and authorities.</p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Community Engagement in Conservation</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p>Fostering community-driven conservation initiatives through education, awareness, and local
+                            participation in sustainable resource management practices.</p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sixth Card -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg p-3" data-aos="fade-up"
+                    style="transition: transform 0.3s ease-in-out; background-color: var(--light-color); height: 100%; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header text-white rounded-top"
+                        style="background: linear-gradient(to right, var(--primary-color), var(--secondary-color));">
+                        <h5 class="m-0 p-3 text-center">Forest Restoration Initiatives</h5>
+                    </div>
+                    <div class="card-body text-center flex-grow-1" style="padding: 2rem;">
+                        <p>This project focuses on the restoration of degraded forests in the region, promoting
+                            reforestation and the establishment of new green cover to combat climate change.</p>
+                    </div>
+                    <div class="card-footer text-center mt-auto">
+                        <button class="btn btn-lg"
+                            style="background-color: var(--primary-color); color: white; border: none; width: 100%;">Learn
+                            More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Insights Section -->
+        <div class="container new-content mt-5 mb-5 py-5" data-aos="fade-up"
+            style="background-color: var(--light-color); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+            <h3 class="fw-bold text-center text-dark mb-4"
+                style="font-size: 2.2rem; letter-spacing: 1.2px; font-family: 'Arial', sans-serif;">
+                Additional Insights
+            </h3>
+            <p class="lead text-center text-muted mb-4"
+                style="font-size: 1.35rem; line-height: 1.8; font-family: 'Arial', sans-serif;">
+                As part of the consultation, it is essential to establish robust frameworks that address both ecological
+                sensitivity and tourism sustainability. Collaborative efforts are key to balancing conservation
+                priorities with the growth of eco-tourism initiatives in the region. By fostering awareness and
+                strategic planning, we can ensure that tourism enhances rather than diminishes the natural beauty and
+                biodiversity of ecologically sensitive areas.
+            </p>
+            <div class="text-center">
+                <button class="btn btn-lg"
+                    style="background-color: var(--primary-color); color: white; border-radius: 50px; padding: 15px 40px; font-weight: 600; font-size: 1rem; transition: all 0.4s ease-in-out; border: none; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Kaas Pathar | All rights reserved.</p>
+        <p>Follow us on social media:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

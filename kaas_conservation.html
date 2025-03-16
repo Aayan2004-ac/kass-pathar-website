@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Kaas Conservation</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .margin-top {
+            margin-top: 66px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .header {
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .content-section {
+            border-radius: 12px;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .content-section h2 {
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-section ul li {
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .content-section ul li i {
+            font-size: 1.5rem;
+        }
+
+        .content-section img {
+            transition: transform 0.3s ease;
+        }
+
+        .content-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .list-group-item {
+            font-size: 1rem;
+            line-height: 1.8;
+            border-left: 5px solid #F95738;
+            padding: 1.2rem;
+        }
+
+        .list-group-item:hover {
+            background-color: #F4D35E;
+            cursor: pointer;
+        }
+
+        .list-group-item i {
+            font-size: 1.2rem;
+        }
+
+        .card {
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            background: var(--secondary-color);
+            color: var(--light-color);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark background-color fixed-top bg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40"
+                            class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <div type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="around_kaas.html">Around Kaas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="flower_gallery.html">Flower Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container mb-5">
+        <header class="container-fluid margin-top py-5" data-aos="fade-down">
+            <h2 class="display-4 fw-bold"
+                style="color: #0D3B66; text-transform: uppercase; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Kaas Plateau Conservation
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+        </header>
+
+        <section class="content-section" data-aos="fade-up">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0" data-aos="zoom-in">
+                        <img src="image/kaas.jpeg" alt="Kaas Plateau" class="img-fluid rounded shadow"
+                            style="width: 100%; height: auto;">
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <h2 class="mb-4" style="color: #0D3B66;">What We as NGO / Person Should Do? Can Do?</h2>
+                        <p class="mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                            Remember that the plateau has many rare, endangered, and unique plant species found nowhere
+                            else in the world. It is our responsibility to protect these and avoid extinction.
+                        </p>
+                        <p class="mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                            By taking care of the plateau and enjoying its beauty responsibly, it will remain for years
+                            to come for our enjoyment and future generations. It is a prestigious World Heritage Site,
+                            recognized globally as a unique place. Damage to it would be a loss for us as a nation.
+                            Let's share the responsibility of conservation beyond the government.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="fas fa-seedling text-success me-3"></i>
+                                <span>Encourage sustainable tourism practices.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="fas fa-leaf text-success me-3"></i>
+                                <span>Participate in awareness campaigns for conservation.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="fas fa-globe text-success me-3"></i>
+                                <span>Educate others about the significance of Kaas Plateau.</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="fas fa-hands-helping text-success me-3"></i>
+                                <span>Volunteer for cleaning and preservation activities.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-5">
+                <h2 class="mb-4" data-aos="fade-left" style="font-size: 2rem; font-weight: 600; color: #0D3B66;">As an
+                    NGO</h2>
+                <ul class="list-group list-group-flush" data-aos="fade-left"
+                    style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                    <li class="list-group-item border-0 bg-transparent">
+                        <i class="fas fa-exclamation-circle text-warning me-3"></i>
+                        Avoid trips to Kaas until the conservation management plan is enforced by the Forest Department.
+                    </li>
+                    <li class="list-group-item border-0 bg-transparent">
+                        <i class="fas fa-map-marker-alt text-info me-3"></i>
+                        If you plan a trip:
+                        <ul class="list-group mt-2" style="list-style-type: none;">
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-passport text-success me-3"></i>
+                                Take permits and pay the fees decided by government departments.
+                            </li>
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-info-circle text-success me-3"></i>
+                                Brief all tourists about the uniqueness and biodiversity of the plateau, as well as the
+                                care they need to take while visiting.
+                            </li>
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-users text-success me-3"></i>
+                                Organize sufficient escorts for the group, preferably one for every 10 people.
+                            </li>
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-gavel text-success me-3"></i>
+                                Ensure tourists follow rules of care and avoid harmful behaviors towards the plateau.
+                            </li>
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-car text-success me-3"></i>
+                                Park vehicles before the plateau and encourage walking on foot to preserve the
+                                environment.
+                            </li>
+                            <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                <i class="fas fa-clock text-success me-3"></i>
+                                Limit time on the plateau to avoid overcrowding and its negative impacts.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container py-5" style="color: #0D3B66; border-radius: 15px;">
+                <h2 class="mb-4" data-aos="fade-right" style="font-size: 2rem; font-weight: 700;">As an Individual</h2>
+                <ul data-aos="fade-right" class="list-unstyled">
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-seedling text-success me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Do not walk on plants or flower beds.</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-leaf text-success me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Avoid plucking plants or flowers. They can only
+                            survive in the unique ambiance of the plateau.</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-trash-alt text-danger me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Do not litter. Dispose of waste properly.</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-volume-up text-warning me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Avoid speaking loudly or playing loud music, as it
+                            disturbs the peaceful atmosphere.</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-shoe-prints text-info me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Walk carefully on the plateau and avoid disturbing
+                            the ecosystem.</span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <i class="fas fa-hand-holding-heart text-primary me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1.1rem; color: #333;">Respect nature and its fragile environment.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Kaas Pathar | All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

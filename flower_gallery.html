@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Gallery - Kaas Pathar</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E5077;
+            --secondary-color: #4DA1A9;
+            --accent-color: #79D7BE;
+            --light-color: #F6F4F0;
+            --dark-color: #1B263B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .margin-top {
+            margin-top: 66px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Flower Card Styling */
+        .flower-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .flower-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image Styling with Hover Effect */
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            transition: transform 0.3s ease;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .card-img-wrapper:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        /* Overlay and Icon Effects */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .card-img-wrapper:hover .overlay {
+            opacity: 1;
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .icon-container i {
+            color: white;
+            font-size: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-img-wrapper:hover .icon-container i {
+            opacity: 1;
+        }
+
+        /* Card Body Styling */
+        .card-body {
+            background: linear-gradient(135deg, #0D3B66, #F95738);
+        }
+
+        .card-body h5 {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+
+        .card-body p {
+            color: #F4D35E;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        /* View Details Button Styling */
+        .card-body a {
+            background-color: #F4D35E;
+            color: #0D3B66;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body a:hover {
+            background-color: #0D3B66;
+            color: #fff;
+        }
+
+        /* Accessibility and Hover Enhancements */
+        .card-body a:focus {
+            outline: 2px solid #F4D35E;
+            outline-offset: 4px;
+        }
+
+        .card-body a:hover,
+        .card-body a:focus {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Modal Image Styling */
+        #modalFlowerImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flower-card {
+                transform: none;
+            }
+
+            .card-body h5 {
+                font-size: 1.25rem;
+            }
+        }
+
+        #modalFlowerImage {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .modal-footer .btn {
+            background-color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+        }
+
+        .btn-close {
+            background-color: var(--dark-color);
+            border-radius: 50%;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--primary-color);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <img src="image/logo1.webp" alt="logo" width="40"
+                            class="d-inline-block align-top rounded-circle">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3 mt-1">
+                        Kaas Pathar
+                    </div>
+                </div>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Kaas Pathar</h5>
+                    <div type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kaas_conservation.html">Kaas Conservation</a></li>
+                                <li><a class="dropdown-item" href="public_consultation.html">Public Consultation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="around_kaas.html">Around Kaas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="flower_gallery.html">Flower Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container margin-top mb-5">
+        <header class="container-fluid py-5" data-aos="fade-down">
+            <h2 class="display-4 fw-bold text-uppercase"
+                style="color: #0D3B66; letter-spacing: 2px; text-align: left; position: relative; padding-left: 20px;">
+                Flower Gallery
+                <span
+                    style="position: absolute; left: 0; top: 0; height: 100%; width: 10px; background-color: #F95738;"></span>
+            </h2>
+        </header>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="flowerCardsContainer">
+            <!-- Dynamic flower cards will be added here -->
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="flowerModal" tabindex="-1" aria-labelledby="flowerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="background-color: #0D3B66; color: #fff; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="modal-title" id="flowerModalLabel">Flower Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- Image Section -->
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <img id="modalFlowerImage" class="img-fluid rounded-3 shadow-sm" alt="Flower Image" 
+                                 style="max-width: 100%; height: auto; object-fit: cover;">
+                        </div>
+                        <!-- Text Section -->
+                        <div class="col-12 col-md-6">
+                            <h5 id="modalFlowerTitle" class="fw-bold" style="color: #0D3B66; font-size: 1.8rem;">Flower Title</h5>
+                            <p id="modalFlowerDescription" class="lead" style="color: #F95738; font-size: 1.1rem; line-height: 1.6;">
+                                Flower description goes here. Add a short yet detailed description of the flower here for the user to understand more about it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <footer class="footer">
+        <p>&copy; 2024 Kaas Pathar | All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap 5 JS and Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+
+        const flowers = [
+            {
+                title: "Ceropegia vincaefolia",
+                short: "Ceropegia vincaefolia, commonly known as the 'Vinca-leaved Ceropegia,' is a unique, trailing succulent plant with slender, vine-like stems and small, delicate flowers.",
+                description: "Ceropegia vincaefolia is a fascinating member of the Ceropegia genus, native to India and parts of Southeast Asia. The plant features slender, trailing stems that can grow up to a meter long, adorned with small, heart-shaped leaves that resemble the shape of a Vinca plant. The flowers are intricate, often with a tubular shape and a delicate.",
+                imageUrl: "image/Ceropegia vincaefolia.jpg"
+            },
+            {
+                title: "Hitchenia caulina",
+                short:"Hitchenia caulina is a striking flowering plant known for its vibrant, tubular flowers and lush green foliage.",
+                description: "Hitchenia caulina, a member of the Gesneriaceae family, is a tropical flowering plant native to the rainforests of Central and South America. This species is characterized by its glossy, dark green leaves and striking, tubular flowers that come in shades of bright red, orange, or yellow.",
+                imageUrl: "image/Hitchenia caulina.jpg"
+            },
+            {
+                title: "Habenaria longicorniculata",
+                short:"Habenaria longicorniculata is a striking orchid species native to tropical regions, known for its unique and delicate flowers.",
+                description: "Habenaria longicorniculata, part of the Orchidaceae family, is a captivating flower that thrives in tropical and subtropical environments. This species is renowned for its delicate and intricate flowers, which have long, slender petals that seem to radiate from the center, resembling fine threads. The flowers often appear in clusters.",
+                imageUrl: "image/Habenaria longicorniculata.jpg"
+            },
+            {
+                title: "Impatiens Balfouri",
+                short:"Impatiens balfourii, also known as Balfour's Impatiens, is a perennial flowering plant that is admired for its vibrant, colorful blooms.",
+                description: "Impatiens balfourii is a species of flowering plant in the family Balsaminaceae, native to the eastern Himalayas. This plant is well-known for its unique, tubular flowers that come in a range of bright colors, including shades of pink, red, and white. The flowers grow in clusters, and their elongated, delicate petals give them a distinctive.",
+                imageUrl: "image/Impatiens Balfouri.jpg"
+            },
+            {
+                title: "Arisaema Murrayi",
+                short:"Arisaema murrayi, commonly known as Murray's Jack-in-the-pulpit, is a perennial plant that features distinctive.",
+                description: "Arisaema murrayi, or Murray's Jack-in-the-pulpit, is a fascinating perennial native to the forests of East Asia, particularly India and parts of Nepal. This plant is known for its unusual and distinctive flowers, which consist of a hood-like structure (the spathe) that partially encloses a vertical spike (the spadix).",
+                imageUrl: "image/Arisaema Murrayi.jpg"
+            },
+            {
+                title: "Asclapius curresavica",
+                short:"Asclepias curassavica, commonly known as Tropical Milkweed, is a vibrant perennial plant with clusters of bright orange or red flowers.",
+                description: "Asclepias curassavica, or Tropical Milkweed, is a flowering perennial native to tropical and subtropical regions of the Americas, including parts of Central and South America. It is renowned for its striking clusters of bright orange, red, or yellow flowers that bloom profusely throughout the warm seasons.",
+                imageUrl: "image/Asclapius curresavica.jpg"
+            },
+            {
+                title: "Pinda concanensis",
+                short:"Pinda concanensis, commonly known as Concan Pinda, is a rare and beautiful flowering plant native to the Concan region of India. ",
+                description: "Pinda concanensis is a species of flowering plant that is native to the Concan region, located along the western coast of India. Known for its striking beauty, this plant produces delicate, colorful flowers that add a burst of vibrancy to any garden. The flowers typically bloom in clusters, showcasing shades of pink, purple, and white, often with a distinct star-like shape.",
+                imageUrl: "image/Pinda concanensis.jpg"
+            },
+            {
+                title: "Habenaria grandifloriformis",
+                short:"Habenaria grandifloriformis is an exquisite orchid species known for its large, striking flowers.",
+                description: "Habenaria grandifloriformis is a species of orchid belonging to the Habenaria genus, which is well-known for its unique and beautiful flowers. This particular species stands out due to its large and showy blossoms, which feature delicate, white to pale green petals and lip. The flowers often have a distinctive shape with long.",
+                imageUrl: "image/Habenaria grandifloriformis.jpg"
+            },
+            {
+                title: "Senecio bombayensis",
+                short:"Senecio bombayensis is a species of flowering plant native to the Indian subcontinent, known for its attractive and vibrant yellow blooms.",
+                description: "Senecio bombayensis is a striking species of the Senecio genus, belonging to the Asteraceae family. Native to the Indian subcontinent, particularly in regions around Bombay (now Mumbai), this plant thrives in rocky, coastal, and sometimes disturbed habitats. It is a perennial shrub that typically grows to a height of 30–60 cm.",
+                imageUrl: "image/Senecio bombayensis.jpg"
+            },
+            {
+                title: "Murdannia Lanuginosa",
+                short:"Murdannia lanuginosa, commonly known as the hairy-leafed or soft-leaved Murdannia, is a perennial flowering plant native to Southeast Asia.",
+                description: "Murdannia lanuginosa is a perennial plant belonging to the Commelinaceae family, primarily found in tropical and subtropical regions of Southeast Asia. This plant is admired for its unique and beautiful flowers, making it a popular choice for ornamental gardening and landscaping.",
+                imageUrl: "image/Murdannia Lanuginosa.jpg"
+            },
+            {
+                title: "Gloriosa superba",
+                short:"Gloriosa superba, also known as the flame lily or glory lily, is a stunning flowering plant native to tropical Asia and Africa.",
+                description: "Gloriosa superba is a climbing plant belonging to the Colchicaceae family, native to tropical Asia and parts of sub-Saharan Africa. Known by common names such as the flame lily or glory lily, this striking flower is renowned for its vibrant and flamboyant appearance, making it a popular choice in gardens and floral arrangements.",
+                imageUrl: "image/Gloriosa superba.jpg"
+            },
+            {
+                title: "Cynotis Tuberosa",
+                short:"Cynotis tuberosa is a perennial herb known for its striking, vibrant purple or blue flowers. ",
+                description: "Cynotis tuberosa, commonly known as the tuberous cynotis, is a species of flowering plant in the Commelinaceae family, native to tropical and subtropical regions of Asia. It is a perennial herb that has gained popularity in gardens and landscapes for its striking appearance and easy care.",
+                imageUrl: "image/Cynotis Tuberosa.jpg"
+            },
+            {
+                title: "Costus speciosus",
+                short:"Costus speciosus, also known as crepe ginger or yellow costus, is a perennial flowering plant native to Southeast Asia.",
+                description: "Costus speciosus, commonly referred to as crepe ginger or yellow costus, is a species of flowering plant in the Costaceae family, native to the tropical regions of Southeast Asia, including India, Malaysia, and the Philippines. This plant is valued both for its ornamental appeal and its significance in traditional herbal medicine.",
+                imageUrl: "image/Costus speciosus.jpg"
+            },
+            {
+                title: "Cyanotis Fasciculata",
+                short:"Cyanotis fasciculata, commonly known as Blue Pussy's Ears, is a small, herbaceous plant native to tropical Asia.",
+                description: "Cyanotis fasciculata, also known as Blue Pussy's Ears or Blue Cyanotis, is a species of herbaceous perennial in the Commelinaceae family, native to tropical and subtropical regions of Asia, including India and Southeast Asia. This plant is primarily cultivated for its attractive, vibrant blue flowers.",
+                imageUrl: "image/Cyanotis Fasciculata.jpg"
+            },
+            {
+                title: "Celosia argentia",
+                short:"Celosia argentea, commonly known as Cockscomb, is an ornamental flowering plant famous for its vibrant, flame-like flowers.",
+                description: "Celosia argentea, also known as Cockscomb or Silver Cockscomb, is a species of flowering plant in the Amaranthaceae family. Native to tropical Asia and Africa, this plant is widely cultivated as an ornamental garden flower due to its bright, colorful inflorescences, which resemble the comb of a rooster.",
+                imageUrl: "image/Celosia argentia.jpg"
+            },
+            {
+                title: "Argyreia baseana",
+                short:"Argyreia baseana is a species of flowering plant native to India, known for its attractive, heart-shaped leaves and beautiful.",
+                description: "Argyreia baseana is a climbing or trailing plant belonging to the Convolvulaceae family, native to India and parts of Southeast Asia. It is commonly known for its lush, ornamental qualities, making it a popular choice in gardens and landscapes. This species is distinguished by its large, heart-shaped leaves.",
+                imageUrl: "image/Argyreia_baseana.jpg"
+            },
+        ];
+
+        function addFlowerCards() {
+            const flowerCardsContainer = $('#flowerCardsContainer');
+            flowers.forEach(flower => {
+                const flowerCard = `
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" data-aos="fade-up">
+            <div class="card h-100 shadow-lg border-0 rounded-4 flower-card" style="overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <!-- Image Section with Hover Effect -->
+                <div class="card-img-wrapper" style="position: relative; overflow: hidden;">
+                    <img src="${flower.imageUrl}" class="card-img-top flower-image" alt="${flower.title}" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+                    <div class="icon-container">
+                        <i class="fas fa-search-plus" style="color: white; font-size: 2rem; opacity: 0; transition: opacity 0.3s ease;"></i>
+                    </div>
+                </div>
+
+                <!-- Card Body Section -->
+                <div class="card-body d-flex flex-column p-4" style="flex-shrink: 0; position: relative; padding-bottom: 30px; background: linear-gradient(135deg, #0D3B66, #F95738);">
+                    <h5 class="card-title" style="font-family: 'Roboto', sans-serif; font-size: 1.5rem; color: #fff; font-weight: 700; line-height: 1.5; transition: color 0.3s ease;">
+                        ${flower.title}
+                    </h5>
+                    <p class="card-text text-white" style="font-size: 1rem; font-weight: 400; color: #F4D35E; margin-bottom: 1rem; transition: color 0.3s ease;">
+                        ${flower.short}
+                    </p>
+                    <div class="mt-auto text-center">
+                        <a href="#" class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#flowerModal" 
+                            onclick="showFlowerDetails('${flower.title.replace(/'/g, "\\'")}', '${flower.description.replace(/'/g, "\\'")}', '${flower.imageUrl}')">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+                flowerCardsContainer.append(flowerCard);
+            });
+        }
+
+        // Show Flower Details in Modal
+        function showFlowerDetails(title, description, imageUrl) {
+            console.log("Image URL:", imageUrl);  // Ensure the image URL is passed correctly
+
+            // Set modal title and description
+            $('#modalFlowerTitle').text(title);
+            $('#modalFlowerDescription').text(description);
+
+            // Set image source
+            $('#modalFlowerImage').attr('src', imageUrl);
+
+            // Confirm the image URL is set correctly
+            console.log('Image src set to:', $('#modalFlowerImage').attr('src'));
+
+            // Show the modal
+            $('#flowerModal').modal('show');
+        }
+
+        // Initialize flower cards on page load
+        $(document).ready(function () {
+            addFlowerCards();
+        });
+
+        // Hover effect to show overlay and icon
+        const flowerCards = document.querySelectorAll('.flower-card');
+
+        flowerCards.forEach(card => {
+            const image = card.querySelector('.card-img-wrapper img');
+            const overlay = card.querySelector('.overlay');
+            const icon = card.querySelector('.icon-container');
+
+            card.addEventListener('mouseenter', () => {
+                image.style.transform = 'scale(1.1)';
+                overlay.style.opacity = '1';
+                icon.style.opacity = '1';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                image.style.transform = 'scale(1)';
+                overlay.style.opacity = '0';
+                icon.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+
+</html>
